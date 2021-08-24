@@ -12,7 +12,7 @@ const bodyParser = require("body-parser")
 const cors=require('cors')
 const validityrouter=require("./api/token/validity")
 const marquerouter=require("./api/marque/routes")
-
+const greetroute=require("./api/greeting/routes")
 dotenv.config()
 var corsOptions={
     origin:['http://localhost:3000',"http://dev.nishkaera.com"],
@@ -27,6 +27,7 @@ app.use(cors(corsOptions))
 app.use('/uploads', express.static('uploads'));
 
 //api routes
+app.use("/",greetroute)
 app.use("/api",userrouter)  // login and register route
 app.use("/api/story",storyrouter) //story route
 app.use("/api/learn",learnrouter)  //learning card route
